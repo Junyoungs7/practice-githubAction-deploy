@@ -1,10 +1,13 @@
 package com.example.practicegithubActiondeploy;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
 public class test {
 
-    public void t1() {
-        System.out.println("test1");
-        System.out.println("test1");
-        System.out.println("test1");
+    @GetMapping("/")
+    public String t1() {
+        return "Test Success!!";
     }
 }
