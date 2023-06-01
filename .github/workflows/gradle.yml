@@ -49,3 +49,10 @@ jobs:
 
     - name: Upload to S3
       run: aws s3 cp --region ap-northeast-2 ./practice-deploy.zip s3://$S3_BUCKET_NAME/practice-deploy.zip
+
+    - name: Code Deploy
+      run: >
+        aws deploy create-deployment --application-name be-24-junyoungs7
+        --deployment-config-name CodeDeployDefault.AllAtOnce
+        --deployment-group-name be-24-junyoungs7-group
+        --s3-location bucket=$S3_BUCKET_NAME,bundleType=zip,key=practice-deploy.zip
